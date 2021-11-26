@@ -1,11 +1,27 @@
-provider "aws" {
-    access_key = "${var.aws_access_key}"
-    secret_key = "${var.aws_secret_key}"
-    region = "${var.region}"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.27"
+    }
+  }
+
+  required_version = ">= 0.14.9"
 }
 
-module "s3" {
-    source = "<path-to-S3-folder>"
-    #bucket name should be unique
-    bucket_name = "<Bucket-name>"       
+provider "aws" {
+  profile = "default"
+  region  = "us-west-2"
+}
+
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  bucket = "my-s3-bucketavik1234567898"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
+
 }
