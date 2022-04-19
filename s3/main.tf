@@ -14,14 +14,6 @@ provider "aws" {
   region  = "us-east-2"
 }
 
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-
-  bucket = "my-s3-bucketavik1234567898"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
-
+resource "aws_s3_bucket" "b" {
+  bucket = "batch25terraformbucket"
 }
