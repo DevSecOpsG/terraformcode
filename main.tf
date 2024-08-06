@@ -17,7 +17,7 @@ provider "aws" {
 resource "aws_security_group" "example" {
   name        = "example-security-group"
   description = "Security group for example application"
-  vpc_id      = "vpc-xxxxxx"  # Replace with your VPC ID
+  vpc_id      = "vpc-0ac7c98f59638997f"  # Replace with your VPC ID
 
   # Inbound rules
   ingress {
