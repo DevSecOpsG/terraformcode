@@ -1,0 +1,24 @@
+# Terraform files
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfplan
+.terraform/
+terraform.tfstate
+terraform.tfstate.*
+.terraform.lock.hcl
+
+# Sensitive files
+*.pem
+*.key
+*.p12
+
+# Editor specific files
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# OS-specific files
+.DS_Store
+Thumbs.db
