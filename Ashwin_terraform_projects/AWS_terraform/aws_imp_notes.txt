@@ -1,0 +1,44 @@
+# AWS Terraform Projects
+
+This repository contains modular and independent Terraform scripts to create essential AWS services. Each directory includes a standalone `main.tf` file to help you provision individual resources easily using the Terraform CLI.
+
+##  Folder Structure
+
+- `ec2/` – Deploy a basic EC2 instance
+- `iam_user/` – Create an IAM user
+- `s3/` – Create an S3 bucket
+- `rds/` – Provision an RDS (MySQL) instance
+- `vpc/` – Create a custom VPC
+- `eks_cluster/` – Deploy an EKS cluster using Terraform AWS Module
+
+##  Requirements
+
+- [Terraform](https://developer.hashicorp.com/terraform/downloads) installed
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured (`aws configure`)
+- AWS IAM credentials with sufficient permissions to create resources
+
+##  How to Use
+
+Each module is self-contained. Just `cd` into the folder and run Terraform commands.
+
+### Example: EC2
+
+```bash
+cd ec2
+terraform init
+terraform plan
+terraform apply
+
+
+## To destroy the EC2 instance later:
+
+terraform destroy
+
+#Important: Edit the main.tf file before running if you need to customize AMI IDs, regions, instance types, etc.
+
+#Notes
+#No variables or backend configuration is used — everything is kept simple and in main.tf.
+#EKS and RDS setups may incur costs — review the plan before applying.
+#Make sure your AWS CLI session has the right permissions and region set.
+
+Thanks - Ashwin - CloudChuck
