@@ -1,0 +1,63 @@
+
+# GCP Terraform Projects
+
+This folder includes standalone Terraform configuration files to help you provision popular Google Cloud services. Each module lives in its own directory and is completely self-contained with a `main.tf`.
+
+##  Folder Structure
+
+- `compute_engine/` – Launch a VM instance on GCE
+- `iam_user/` – Create a GCP service account (IAM user)
+- `cloud_storage/` – Create a Cloud Storage bucket
+- `cloud_sql/` – Launch a Cloud SQL (MySQL) instance
+- `vpc/` – Create a custom VPC
+- `gke_cluster/` – Deploy a Kubernetes cluster using GKE
+
+##  Requirements
+
+- [Terraform](https://developer.hashicorp.com/terraform/downloads)
+- [Google Cloud SDK (gcloud)](https://cloud.google.com/sdk/docs/install)
+- A GCP project with billing enabled
+- Service account with `Editor` permissions
+- Required API are enabled
+- Project id need to replaced with your project id
+
+## API enable cmd after created new project in gcp
+
+gcloud config set project your-gcp-project-id
+gcloud services enable compute.googleapis.com
+gcloud services enable container.googleapis.com
+gcloud services enable sqladmin.googleapis.com
+
+
+## First-Time Setup
+
+```bash
+
+
+IMP POWER SHELL cmd
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:/Users/91750/Downloads/service-account.json"
+
+note required 
+gcloud auth login
+gcloud config set project your-project-id
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your-service-account.json"
+
+
+##🚀 How to Use Navigate into any service folder and run:
+
+terraform init
+terraform plan
+terraform apply
+
+# To destroy resources:
+terraform destroy
+
+
+## Important: Replace placeholders like your-gcp-project-id in the main.tf before using.
+
+### Notes
+#No variables or backend state — direct .tf files only.
+#Designed for demo, learning, and personal project usage.
+#GKE and Cloud SQL resources may incur charges — review terraform plan output carefully.
+
+Thanks Ashwin - CloudChuck
