@@ -1,11 +1,23 @@
-provider "aws" {
-    access_key = "${var.aws_access_key}"
-    secret_key = "${var.aws_secret_key}"
-    region = "${var.region}"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.27"
+    }
+  }
+
+  required_version = ">= 0.14.9"
 }
 
-module "s3" {
-    source = "<path-to-S3-folder>"
-    #bucket name should be unique
-    bucket_name = "<Bucket-name>"       
+provider "aws" {
+  profile = "default"
+  region  = "us-east-2"
+}
+resource "aws_db_instance" "default" {
+  allocated_storage = 10
+  engine = "mysql"
+  instance_class = "db.t3.micro"
+  username = "foo"
+  password = "foobarbaz"
+  skip_final_snapshot = true // required to destroy
 }
