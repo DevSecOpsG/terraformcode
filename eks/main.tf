@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-south-1"
 }
 
 # Create VPC
@@ -11,13 +11,13 @@ resource "aws_vpc" "eks_vpc" {
 resource "aws_subnet" "eks_subnet_a" {
   vpc_id            = aws_vpc.eks_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "ap-south-1a"
 }
 
 resource "aws_subnet" "eks_subnet_b" {
   vpc_id            = aws_vpc.eks_vpc.id
   cidr_block        = "10.0.2.0/24"
-  availability_zone = "us-east-1b"
+  availability_zone = "ap-south-1b"
 }
 
 # Create IAM Role for EKS Cluster
@@ -44,7 +44,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
 
 # Create EKS Cluster
 resource "aws_eks_cluster" "example" {
-  name     = "my-eks-cluster"
+  name     = "terraform-cluster"
   role_arn = aws_iam_role.eks_cluster_role.arn
 
   vpc_config {
