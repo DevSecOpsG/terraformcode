@@ -15,5 +15,9 @@ provider "aws" {
 }
 
 resource "aws_iam_user" "lb" {
-  name = "Adam"
+  name = "Nagesh123"
+}
+resource "aws_iam_user_policy_attachment" "admin_access" {
+  user       = aws_iam_user.lb.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
