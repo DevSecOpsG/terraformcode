@@ -1,0 +1,10 @@
+resource "aws_cloudwatch_alarm_mute_rule" "example" {
+  name = "example"
+
+  rule {
+    schedule {
+      duration   = "PT4H"
+      expression = "cron(0 2 * * *)"
+    }
+  }
+}
